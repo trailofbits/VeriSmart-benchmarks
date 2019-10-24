@@ -6,7 +6,7 @@ import sys
 from csv             import reader
 from multiprocessing import Pool
 
-from tools import tool_list, run_echidna
+from tools import tool_list, run_echidna, run_manticore
 
 def parse_metadata(filename, prefix):
     r = []
@@ -86,6 +86,8 @@ def main():
 
     if args.tool == "echidna":
         func = run_echidna
+    if args.tool == "manticore":
+        func = run_manticore
 
     with Pool(args.procs) as p:
         data = p.map(func, contracts)
