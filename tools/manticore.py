@@ -11,7 +11,7 @@ def run_manticore(p):
     os.mkdir(cdir)
     os.chdir(cdir)
 
-    cmd = 'manticore ../../'+filename+' --contract '+contract+' '+extra_args+' --core.timeout 120 --txlimit 1 --core.procs 1 --evm.oog ignore > manticore.out 2> manticore.err'
+    cmd = 'manticore ../../'+filename+' --contract '+contract+' '+extra_args+' --exclude-all --core.mprocessing single --core.timeout 120 --txlimit 1 --core.procs 1 --evm.oog ignore > manticore.out 2> manticore.err'
     start = time.time()
     os.system(cmd)
     end = time.time()
